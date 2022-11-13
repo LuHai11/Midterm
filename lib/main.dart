@@ -95,7 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: ElevatedButton(onPressed: (){
                   final snackBar = SnackBar(
                     content: Text(imgname[counter]),
-
                   );
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }, child:  Container(
@@ -112,22 +111,26 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(onPressed: (){
+                Container(
+                  padding: EdgeInsets.only(right: 50),
+                child: ElevatedButton(onPressed: (){
                   counter--;
                   if(counter<0){
                     counter = imglist.length-1;
                   }
                   setState(() {counter;});
                   Fluttertoast.showToast(msg: 'previous');
-                  }, child: Text('<',style: TextStyle(fontSize: 28),)),
-                ElevatedButton(onPressed: (){
+                  }, child: Text('<',style: TextStyle(fontSize: 28),))),
+                Container(
+                  padding: EdgeInsets.only(left: 50),
+                child: ElevatedButton(onPressed: (){
                   counter++;
                   if(counter>imglist.length-1){
                     counter = 0;
                   }
                   setState(() {counter;});
                   Fluttertoast.showToast(msg: 'next');
-                }, child: Text('>',style: TextStyle(fontSize: 28),))
+                }, child: Text('>',style: TextStyle(fontSize: 28),))),
               ],
             )
           ],
